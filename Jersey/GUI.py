@@ -6,8 +6,10 @@ Created on Wed May  7 16:18:24 2025
 @author: cmjw
 """
 
+import Josh_copy.quantum_energy as qe
 from tkinter import *
 from tkinter import ttk
+
 
 thermo_submits = 0
 #vals_submitted = 0 # records how many values from the dropbox have been submitted
@@ -46,18 +48,40 @@ def open_home_window():
 
 
           def thermo_submitted():
-               global thermo_submits
-               #print("thermo count =", thermo_submits)
+               #int_num = int(thermo_num_choice.get())
+               int_num = int(thermo_num_choice.get())
+
                thermo_unit_str = thermo_unit_choice.get()
                first_brack_ind = thermo_unit_str.find("(")
                second_brack_ind = thermo_unit_str.find(")")
+               unit_abbrev = thermo_unit_str[first_brack_ind+1:second_brack_ind]
+               
+               print(thermo_unit_choice.get())
+               #int_val = int(thermo_val_choice.get())
+               thermo_outs = qe.Output(thermo_val_choice.get(), int(thermo_num_choice.get()), unit_abbrev)
+               print("----------------------------------")
+               current_out_text = ("Energy (J) =", thermo_outs[0],
+                                   "\nEnergy (eV) =", thermo_outs[1],
+                                   "\nWavelength (m) =", thermo_outs[2],
+                                   "\nWavelength (nm) =", thermo_outs[3],
+                                   "\nFrequency (Hz) =", thermo_outs[4],
+                                   "\nFrequency (kHz) =", thermo_outs[5],
+                                   "\nWavenumber (m^-1) =", thermo_outs[6],
+                                   "\nWavenumber (cm^-1) =", thermo_outs[7])
+               current_out_label = Label(converter_win, text=current_out_text)
+               current_out_label.place(x=475,y=100)
+
+               
+##               global thermo_submits
+##               #print("thermo count =", thermo_submits)
+
                #print(first_brack_ind)
                #print(second_brack_ind)
-               unit_abbrev = thermo_unit_str[first_brack_ind+1:second_brack_ind]
-               log_text = thermo_val_choice.get() + " of " + thermo_num_choice.get() + " " + unit_abbrev
-               output_log = Label(converter_win, text=log_text) # creates a label containing the current submission choice
-               output_log.place(x=475,y=(95+thermo_submits*20)) # places the label a factor of 20 below the previous entry
-               thermo_submits += 1 # adds 1 to the count since 1 more submission has been made
+     
+##               log_text = thermo_val_choice.get() + " of " + thermo_num_choice.get() + " " + unit_abbrev
+##               output_log = Label(converter_win, text=log_text) # creates a label containing the current submission choice
+##               output_log.place(x=475,y=(95+thermo_submits*20)) # places the label a factor of 20 below the previous entry
+##               thermo_submits += 1 # adds 1 to the count since 1 more submission has been made
 
      ##     def thermo_val_submitted():
      ##          global vals_submitted
@@ -95,7 +119,10 @@ def open_home_window():
 
           thermo_unit_choice = StringVar()
           thermo_unit_dropdown = ttk.Combobox(converter_win, font=(10), textvariable=thermo_unit_choice)
-          thermo_unit_dropdown["values"] = ("Joules (J)", "Electron volts (eV)", "Nanometers (nm)", "Meters (m)", "Hertz (Hz)", "Kilohertz (KHz)")
+          thermo_unit_dropdown["values"] = ("Joules (J)", "Electron volts (eV)",
+                                            "Meters (m)", "Nanometers (nm)",
+                                            "Hertz (Hz)", "Kilohertz (kHz)",
+                                            "Meters^-1 (m^-1)", "Centimeters^-1 (cm^-1)")
           thermo_unit_dropdown.set("Choose a unit")
           thermo_unit_dropdown.place(x=100, y=150)   
           
@@ -142,7 +169,7 @@ def open_home_window():
 
 
 
-# open_home_window() test if running GUI.py on its own (without driver)
+#open_home_window() # test if running GUI.py on its own (without driver)
 
 
 
