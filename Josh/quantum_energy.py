@@ -7,35 +7,35 @@ Unit Converter
 '''
 
 def eV_to_j(value):
-    
+    """Converts electron volts to joules"""
     return value*(1.602*(10**-19))
 
 def j_to_eV(value):
-    
+    """Converts joules ot electron volts"""
     return value/(1.602*(10**-19))
 
 def nm_to_m(value):
-    
+    """Converts nanometres to metres"""
     return value*(10**-9)
 
 def m_to_nm(value):
-    
+    """Converts metres to nanometres"""
     return value/(10**-9)
 
 def khz_to_hz(value):
-    
+    """Converts kilohertz to hertz"""
     return value/(10**-3)
 
 def hz_to_khz(value):
-    
+    """Converts hertz to kilohertz"""
     return value*(10**-3)
 
 def cm_to_m(value):
-    
+    """Converts per cm to per m"""
     return value/(10**-2)
 
 def m_to_cm(value):
-    
+    """Converts per m to per cm"""
     return value*(10**-2)
 
 
@@ -72,26 +72,26 @@ Variable Function Getters
 '''
 
 def From_Energy(energy_joules):
-    
+    """Gets all variable functions that are needed from energy input"""
     return energy_joules, wavelength_from_energy(energy_joules), frequency_from_energy(energy_joules), wavenumber_from_energy(energy_joules)
 
 def From_Wavelength(wavelength_m):
-    
+    """Gets all variable functions that are needed from wavelength input"""
     energy_joules = energy_from_wavelength(wavelength_m)
     return energy_joules, wavelength_m, frequency_from_energy(energy_joules), wavenumber_from_energy(energy_joules)
 
 def From_Frequency(frequency_hz):
-    
+    """Gets all variable functions that are needed from frequency input"""
     energy_joules = energy_from_frequency(frequency_hz)
     return energy_joules, wavelength_from_energy(energy_joules), frequency_hz, wavenumber_from_energy(energy_joules)
 
 def From_Wavenumber(wavenumber_per_m):
-    
+    """Gets all variable functions that are needed from wavenumber input"""
     energy_joules = energy_from_wavenumber(wavenumber_per_m)
     return energy_joules, wavelength_from_energy(energy_joules), frequency_from_energy(energy_joules), wavenumber_per_m
 
 def Decider(option, value, unit):
-    
+    """Decides what type of data has been given, and if it requires converting into standard units"""
     if option == "Energy":
         if unit == "eV":
             value=eV_to_j(value)
@@ -114,7 +114,7 @@ def Decider(option, value, unit):
 
 
 def Output(option, value, unit):
-    
+    """grabs all variables and prints them"""
     energy_j, wavelength_m, frequency_hz, wavenumber_m = Decider(option, value, unit)
     energy_eV = j_to_eV(energy_j)
     wavelength_nm = m_to_nm(wavelength_m)
