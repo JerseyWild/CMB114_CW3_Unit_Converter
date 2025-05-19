@@ -134,6 +134,7 @@ def Output(option, value, unit):
     print(f"Wavenumber(m**-1)  | {wavenumber_m:.2e}")
     print(f"Wavenumber(cm**-1) | {wavenumber_cm:.2e}")
     print("")
+    return energy_j, energy_eV, wavelength_m, wavelength_nm, frequency_hz, frequency_khz, wavenumber_m, wavenumber_cm
 
 
 #testers
