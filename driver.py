@@ -3,9 +3,9 @@
 
 print("*** Starting the driver script ***\n")
 
-import Josh.quantum_energy as qe
+# import Josh.quantum_energy as qe
 
-print("Imported modules successfully.")
+# print("Imported modules successfully.")
 
 import Jersey.GUI as gui
 print("Imported modules successfully.")
