@@ -142,7 +142,7 @@ def open_home_window():
 
 
 
-open_home_window()
+# open_home_window() test if running GUI.py on its own (without driver)
 
 
 
