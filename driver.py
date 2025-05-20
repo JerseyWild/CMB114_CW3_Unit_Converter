@@ -1,16 +1,17 @@
 #!/usr/bin/python3
-
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), 'Jersey'))
+import quantum_energy
 
 print("*** Starting the driver script ***\n")
 
-# import Josh.quantum_energy as qe
 
-# print("Imported modules successfully.")
 
 import Jersey.GUI as gui
 print("Imported modules successfully.")
 
 print("Calling Output...\n")
 
-qe.Output("Energy", 1.77, "eV")
+
 gui.open_home_window()
