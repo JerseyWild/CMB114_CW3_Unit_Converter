@@ -6,7 +6,7 @@ Created on Wed May  7 16:18:24 2025
 @author: cmjw
 """
 
-import Josh_copy.quantum_energy as qe
+import quantum_energy as qe
 from tkinter import *
 from tkinter import ttk
 
